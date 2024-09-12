@@ -96,7 +96,6 @@ for x in DesignID:
 
 d = OrderedDict(sorted(DesignID.items(), key=itemgetter(1), reverse=True))
 
-
 Description = [
     "Frequent Traveller Souvenir, Vacation, First Class, Jet Set, Aviation, Pilot, present, Christmas, xmas, birthday, anniversary, mom, dad, son, daughter, grandpa, grandad, granny, grandma, mother's day, father's day, airplane, aeroplane", 
     "present, Christmas, xmas, birthday, anniversary, mom, dad, son, daughter, grandpa, grandad, granny, grandma, mother's day, father's day, travels, vacation, travelling, holidays"
@@ -110,28 +109,32 @@ color_counts = {
     "Long Sleeve T-Shirt": 5,
     "Raglan": 7,
     "Sweatshirt": 5,
-    "Pullover hoodie": 15,
-    "Zip hoodie": 8
+    "Pullover Hoodie": 15,
+    "Zip Hoodie": 8
 }
 
-minPricelist = {"US": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99},
-                "GB": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
-                "DE": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 17.99, "Sweatshirt": 27.99, "Pullover Hoodie": 30.99, "Zip Hoodie": 27.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
-                "FR": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "IT": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 27.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "ES": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 14.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "JP": {"Samsung Galaxy Cases": 0.00, "Standard T-Shirt": 17.51,                                                                       "Long Sleeve T-Shirt": 23.09,                  "Sweatshirt": 31.58, "Pullover Hoodie": 35.22, "Zip Hoodie": 38.90,                           "iPhone Cases": 17.61},
+minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99},
+                "GB": {"Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
+                "DE": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 17.99, "Sweatshirt": 27.99, "Pullover Hoodie": 30.99, "Zip Hoodie": 27.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
+                "FR": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
+                "IT": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 27.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
+                "ES": {"Standard T-Shirt": 14.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
+                "JP": {"Standard T-Shirt": 17.51,                                                                       "Long Sleeve T-Shirt": 23.09,                  "Sweatshirt": 31.58, "Pullover Hoodie": 35.22, "Zip Hoodie": 38.90,                           "iPhone Cases": 17.61},
                 }
  
-maxPricelist = {"US": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 21.99, "Premium T-Shirt": 23.99, "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 26.99, "Raglan": 26.99, "Sweatshirt": 33.99, "Pullover Hoodie": 33.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 22.99, "Tote Bag": 22.99, "Throw Pillows": 23.58},
-                "GB": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 19.58,                           "V-neck T-Shirt": 22.99, "Tank Top": 21.28, "Long Sleeve T-Shirt": 26.99, "Raglan": 22.08, "Sweatshirt": 33.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 32.99, "PopSockets Grip": 19.99, "iPhone Cases": 17.99},
-                "DE": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 23.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 24.99, "Long Sleeve T-Shirt": 27.99, "Raglan": 25.99, "Sweatshirt": 36.99, "Pullover Hoodie": 38.99, "Zip Hoodie": 36.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
-                "FR": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 22.99, "Long Sleeve T-Shirt": 23.78, "Raglan": 24.68, "Sweatshirt": 32.99, "Pullover Hoodie": 33.08, "Zip Hoodie": 34.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
-                "IT": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 22.99, "Long Sleeve T-Shirt": 23.88, "Raglan": 24.78, "Sweatshirt": 32.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
-                "ES": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 25.99, "Raglan": 26.99, "Sweatshirt": 32.99, "Pullover Hoodie": 34.99, "Zip Hoodie": 34.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
-                "JP": {"Samsung Galaxy Cases": 100.00, "Standard T-Shirt": 24.26,                                                                       "Long Sleeve T-Shirt": 31.11,                  "Sweatshirt": 40.69, "Pullover Hoodie": 44.00, "Zip Hoodie": 45.57,                           "iPhone Cases": 24.75},
+maxPricelist = {"US": {"Standard T-Shirt": 21.99, "Premium T-Shirt": 23.99, "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 26.99, "Raglan": 26.99, "Sweatshirt": 33.99, "Pullover Hoodie": 33.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 20.99, "Tote Bag": 22.99, "Throw Pillows": 23.58},
+                "GB": {"Standard T-Shirt": 19.58,                           "V-neck T-Shirt": 22.99, "Tank Top": 21.28, "Long Sleeve T-Shirt": 26.99, "Raglan": 22.08, "Sweatshirt": 33.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 32.99, "PopSockets Grip": 19.99, "iPhone Cases": 17.99},
+                "DE": {"Standard T-Shirt": 23.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 24.99, "Long Sleeve T-Shirt": 27.99, "Raglan": 25.99, "Sweatshirt": 36.99, "Pullover Hoodie": 38.99, "Zip Hoodie": 36.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
+                "FR": {"Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 22.99, "Long Sleeve T-Shirt": 23.78, "Raglan": 24.68, "Sweatshirt": 32.99, "Pullover Hoodie": 33.08, "Zip Hoodie": 34.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
+                "IT": {"Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 22.99, "Long Sleeve T-Shirt": 23.88, "Raglan": 24.78, "Sweatshirt": 32.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
+                "ES": {"Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 25.99, "Raglan": 26.99, "Sweatshirt": 32.99, "Pullover Hoodie": 34.99, "Zip Hoodie": 34.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
+                "JP": {"Standard T-Shirt": 24.26,                                                                       "Long Sleeve T-Shirt": 31.11,                  "Sweatshirt": 40.69, "Pullover Hoodie": 44.00, "Zip Hoodie": 45.57,                           "iPhone Cases": 24.75},
                 } 
 i=0
+
+Productnumber = sum(len(products) for products in minPricelist.values())
+total_price = round(sum(sum(prices.values()) for prices in minPricelist.values()),2)
+
 Missingcount = 0
 Desccount = 0
 Expiringcount = 0
@@ -139,13 +142,10 @@ openit = True
 Timeoutcounter = 0
 Timeoutlist = []
 Allstats = []
-Productnumber = 71
 missingfive = 0
 missingcolours = 0
 for x in d:
-
-    
-        
+   
     status = []
     message = defaultdict(list)
     message["Total"] = [float(0)]
@@ -175,13 +175,15 @@ for x in d:
 
             message["Totalsales"] = [message["Totalsales"][0] + y[14]]
             message["Total"] = [message["Total"][0] + y[12]]
-            if (y[12] < minPricelist[y[2]][y[6]]):                                       # underpriced    
+            if y[12] in minPricelist and y[12] < minPricelist[y[2]][y[6]]:                                       # underpriced    
                         message["Underpriced"].append(y[6])
                         
-            if (y[12] > maxPricelist[y[2]][y[6]]):                                       # overpriced    
+            if y[12] in maxPricelist and y[12] < maxPricelist[y[2]][y[6]]:                                        # overpriced    
                         message["Overpriced"].append(y[6])
-                    
+            if y[6] not in color_counts:
+                print (y[6])        
             if y[6] in color_counts:                                                         # misssing colours
+                
                 required_colors = color_counts[y[6]]
                 if len(y[8]) < required_colors:
                     message["Colours"].append(y[6] + " Colours missing")
@@ -212,7 +214,7 @@ for x in d:
     message["Colours"] = set(message["Colours"])
     message["REJECTED"] = set(message["REJECTED"])
     message["Total"] = [round(message["Total"][0],2)]
-    Target = 1393.28 + message["Totalsales"][0]
+    Target = total_price + message["Totalsales"][0]
     message["Total"] = ["Total: ", message["Total"][0], "Target: ", Target]
     
     live = status.count("PUBLISHED") + status.count("PROPAGATED")
@@ -234,6 +236,7 @@ for x in d:
         message["Title"] = str(i) + " " + message["Title"]
         
         if d[x].days < 7:
+            
             print (message["Title"])
             print (message["Totalsales"])
             print(message["URL"])
