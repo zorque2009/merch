@@ -110,8 +110,15 @@ color_counts = {
     "Raglan": 7,
     "Sweatshirt": 5,
     "Pullover Hoodie": 15,
-    "Zip Hoodie": 8
+    "Zip Hoodie": 8,
+    "PopSockets Grip": 1,
+    "iPhone Cases": 1,
+    "Samsung Galaxy Cases": 1,
+    "Tote Bag": 1,
+    "Throw Pillows": 1
 }
+
+deprecated_products = ["Samsung Galaxy Cases",]
 
 minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99},
                 "GB": {"Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
@@ -152,7 +159,7 @@ for x in d:
     message["Totalsales"] = [0]
     
     for y in Allitems:
-        if x == y[0]:    
+        if x == y[0] and y[6] not in deprecated_products:    
 
             if y[2] == "US":            
                 message["Title"] = y[1] + " Expiring in " + str(d[x].days) + " days"         #Title
@@ -175,23 +182,22 @@ for x in d:
 
             message["Totalsales"] = [message["Totalsales"][0] + y[14]]
             message["Total"] = [message["Total"][0] + y[12]]
-            if y[12] in minPricelist and y[12] < minPricelist[y[2]][y[6]]:                                       # underpriced    
+
+            if y[12] in minPricelist and y[12] < minPricelist[y[2]][y[6]]:                  # underpriced    
                         message["Underpriced"].append(y[6])
                         
-            if y[12] in maxPricelist and y[12] < maxPricelist[y[2]][y[6]]:                                        # overpriced    
+            if y[12] in maxPricelist and y[12] < maxPricelist[y[2]][y[6]]:                  # overpriced    
                         message["Overpriced"].append(y[6])
             if y[6] not in color_counts:
                 print (y[6])        
-            if y[6] in color_counts:                                                         # misssing colours
-                
-                required_colors = color_counts[y[6]]
-                if len(y[8]) < required_colors:
-                    message["Colours"].append(y[6] + " Colours missing")
-                    missingcolours+=1
-
-                        
+                                        
+            required_colors = color_counts[y[6]]                                            # misssing colour options
+            if len(y[8]) < required_colors:
+                message["Colours"].append(y[6] + " Colours missing")
+                missingcolours+=1
+ 
             status.append(y[13])                                                            #Status counter
-            
+
             if y[13] == "TIMED_OUT":
                 message["TIMED_OUT"].append(y[6])
                 Timeoutlist.append(y[1] + " " + y[2] + " " + y[6])
