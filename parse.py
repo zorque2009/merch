@@ -33,36 +33,36 @@ with open('productor-export.csv', 'r', encoding="utf-8") as f:
         Element =[]
         Colours = []
         Last = []
-        Element.append(row[27])              # 0 DesignID
+        Element.append(row[17])              # 0 DesignID
         
         Element.append(row[1])               # 1 Title
-        Element.append(row[21])              # 2 Marketplace
+        Element.append(row[11])              # 2 Marketplace
         
-        Element.append(row[16])              # 3 Men
-        Element.append(row[17])              # 4 Women
-        Element.append(row[18])              # 5 Kids
-        Element.append(row[22])              # 6 Product Type
-        Element.append(row[42])              # 7 Sold Colours
+        Element.append(row[6])              # 3 Men
+        Element.append(row[7])              # 4 Women
+        Element.append(row[8])              # 5 Kids
+        Element.append(row[12])              # 6 Product Type
+        Element.append(row[32])              # 7 Sold Colours
         
-        for x in range(6, 16):
+        for x in range(43, 71):
             row[x] = row[x].replace("_", " " ) 
             row[x] = row[x].title()
             
-        Colours.extend(row[6:16])            # 8 Colours 
+        Colours.extend(row[43:71])            # 8 Colours 
         Colours[:] = [item for item in Colours if item != '']
         Element.append(Colours)
         
         
-        date = datetime.datetime.strptime(str(row[-3]), '%B %d, %Y %I:%M %p')
+        date = datetime.datetime.strptime(str(row[40]), '%B %d, %Y %I:%M %p')
         Last.append(date)
         
-        if len(row[-21]) > 0:
-            date = datetime.datetime.strptime(str(row[-21]), '%m/%d/%Y') 
+        if len(row[22]) > 0:
+            date = datetime.datetime.strptime(str(row[22]), '%m/%d/%Y') 
             Last.append(date)
 
         Element.append(Last)                # 9 Last Update
         Element.append(row[5])              # 10 Description
-        Element.append(row[44])             # 11 URL
+        Element.append(row[34])             # 11 URL
        
         price = float(row[2])                # 12 Price
         if price > 100:
@@ -71,15 +71,15 @@ with open('productor-export.csv', 'r', encoding="utf-8") as f:
 
         
 
-        if row[28] == "TIMED_OUT":
+        if row[18] == "TIMED_OUT":
             if (str(price)[-1]) == "8":
-                row[28] = row[28]+"_OK"
-        Element.append(row[28])             # 13 Status
+                row[18] = row[18]+"_OK"
+        Element.append(row[18])             # 13 Status
         
         
         sold = 0
-        if len(row[33]) >0:
-            sold = int(row[33])
+        if len(row[23]) >0:
+            sold = int(row[23])
         Element.append(sold)             # 14 Sold Alltime
         
         Allitems.append(Element)
@@ -115,12 +115,14 @@ color_counts = {
     "iPhone Cases": 1,
     "Samsung Galaxy Cases": 1,
     "Tote Bag": 1,
-    "Throw Pillows": 1
+    "Throw Pillows": 1,
+    "Tumbler": 3,
 }
 
 deprecated_products = ["Samsung Galaxy Cases",]
+deprecated = 0
 
-minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99},
+minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99, "Tumbler": 20.99},
                 "GB": {"Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
                 "DE": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 17.99, "Sweatshirt": 27.99, "Pullover Hoodie": 30.99, "Zip Hoodie": 27.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
                 "FR": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
@@ -129,7 +131,7 @@ minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-n
                 "JP": {"Standard T-Shirt": 17.51,                                                                       "Long Sleeve T-Shirt": 23.09,                  "Sweatshirt": 31.58, "Pullover Hoodie": 35.22, "Zip Hoodie": 38.90,                           "iPhone Cases": 17.61},
                 }
  
-maxPricelist = {"US": {"Standard T-Shirt": 21.99, "Premium T-Shirt": 23.99, "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 26.99, "Raglan": 26.99, "Sweatshirt": 33.99, "Pullover Hoodie": 33.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 20.99, "Tote Bag": 22.99, "Throw Pillows": 23.58},
+maxPricelist = {"US": {"Standard T-Shirt": 21.99, "Premium T-Shirt": 23.99, "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 26.99, "Raglan": 26.99, "Sweatshirt": 33.99, "Pullover Hoodie": 33.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 20.99, "Tote Bag": 22.99, "Throw Pillows": 23.58, "Tumbler": 22.99},
                 "GB": {"Standard T-Shirt": 19.58,                           "V-neck T-Shirt": 22.99, "Tank Top": 21.28, "Long Sleeve T-Shirt": 26.99, "Raglan": 22.08, "Sweatshirt": 33.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 32.99, "PopSockets Grip": 19.99, "iPhone Cases": 17.99},
                 "DE": {"Standard T-Shirt": 23.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 24.99, "Long Sleeve T-Shirt": 27.99, "Raglan": 25.99, "Sweatshirt": 36.99, "Pullover Hoodie": 38.99, "Zip Hoodie": 36.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
                 "FR": {"Standard T-Shirt": 22.99,                           "V-neck T-Shirt": 23.99, "Tank Top": 22.99, "Long Sleeve T-Shirt": 23.78, "Raglan": 24.68, "Sweatshirt": 32.99, "Pullover Hoodie": 33.08, "Zip Hoodie": 34.99, "PopSockets Grip": 19.99, "iPhone Cases": 19.99},
@@ -159,8 +161,12 @@ for x in d:
     message["Totalsales"] = [0]
     
     for y in Allitems:
-        if x == y[0] and y[6] not in deprecated_products:    
-
+        if x == y[0]:    
+            if y[6] in deprecated_products:
+                deprecated +=1
+                continue
+            if y[6] in deprecated_products:
+                print("hello")
             if y[2] == "US":            
                 message["Title"] = y[1] + " Expiring in " + str(d[x].days) + " days"         #Title
                 
@@ -191,9 +197,9 @@ for x in d:
             if y[6] not in color_counts:
                 print (y[6])        
                                         
-            required_colors = color_counts[y[6]]                                            # misssing colour options
+            required_colors = color_counts[y[6]]                                            # missing colour options
             if len(y[8]) < required_colors:
-                message["Colours"].append(y[6] + " Colours missing")
+                message["Colours"].append(y[6] + " Colours missing: " + str(required_colors-len(y[8])))
                 missingcolours+=1
  
             status.append(y[13])                                                            #Status counter
@@ -206,10 +212,12 @@ for x in d:
                 message["REJECTED"].append(y[6])
  
             if len (y[9])>1:
-                if y[9][1] > y[9][0]:
+                if y[9][1] > y[9][0] and str(y[12])[-1] != "8":
                     message["Price"].append(y[6] + " " + y[2] + " - Adjust Price")                       # Adjust price
                     
             message["URL"] = y[11]
+            
+
 
 
 
@@ -228,6 +236,8 @@ for x in d:
 
     if (live + status.count("PUBLISHING") + status.count("REVIEW") > 0):
         i+=1
+        if i>497:
+            print(message)
 
        
     
@@ -244,7 +254,6 @@ for x in d:
         if d[x].days < 7:
             
             print (message["Title"])
-            print (message["Totalsales"])
             print(message["URL"])
 
         if (len(message["REJECTED"])==0):
@@ -269,13 +278,13 @@ for x in d:
                 Missingcount += Missing
                 message["Missing"].append(Missing)
                 
-                if Missing == 5:
+                if Missing < 7:
                     Hidelist.add("Missing")
                     missingfive+=1
                 
         pop = message.pop("Status", "pop")
               
-        if len(set(message) - Hidelist) > 0 or ( i>490 and message["Totalsales"][0]>0):
+        if len(set(message) - Hidelist) > 0 or ( i>490 and message["Totalsales"][0]>0) or i==497:
             print (message["Title"])
 
             webbrowser.get('brave').open(message["URL"])
@@ -298,6 +307,7 @@ print ("Missing", Missingcount, "=", int(Missingcount/150), "days")
 print("Missing 5: ", missingfive)
 print("Missing Colours: ", missingcolours)
 print ("Timed out: ", len(Timeoutlist))
+print ("Deprecated: ", deprecated)
 
 
 
