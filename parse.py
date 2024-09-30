@@ -116,7 +116,7 @@ color_counts = {
     "Samsung Galaxy Cases": 1,
     "Tote Bag": 1,
     "Throw Pillows": 1,
-    "Tumbler": 3,
+    "TUMBLER": 3,
 }
 
 deprecated_products = ["Samsung Galaxy Cases",]
