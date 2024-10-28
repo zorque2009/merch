@@ -44,11 +44,12 @@ with open('productor-export.csv', 'r', encoding="utf-8") as f:
         Element.append(row[12])              # 6 Product Type
         Element.append(row[32])              # 7 Sold Colours
         
-        for x in range(43, 71):
+        for x in range(43, 72):
             row[x] = row[x].replace("_", " " ) 
             row[x] = row[x].title()
             
-        Colours.extend(row[43:71])            # 8 Colours 
+
+        Colours.extend(row[43:72])            # 8 Colours 
         Colours[:] = [item for item in Colours if item != '']
         Element.append(Colours)
         
@@ -116,19 +117,19 @@ color_counts = {
     "Samsung Galaxy Cases": 1,
     "Tote Bag": 1,
     "Throw Pillows": 1,
-    "TUMBLER": 3,
+    "Tumbler": 3,
 }
 
 deprecated_products = ["Samsung Galaxy Cases",]
 deprecated = 0
 
-minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99, "Tumbler": 20.99},
-                "GB": {"Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
-                "DE": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 17.99, "Sweatshirt": 27.99, "Pullover Hoodie": 30.99, "Zip Hoodie": 27.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
-                "FR": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "IT": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 27.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "ES": {"Standard T-Shirt": 14.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 26.99, "PopSockets Grip": 13.99, "iPhone Cases": 15.99},
-                "JP": {"Standard T-Shirt": 17.51,                                                                       "Long Sleeve T-Shirt": 23.09,                  "Sweatshirt": 31.58, "Pullover Hoodie": 35.22, "Zip Hoodie": 38.90,                           "iPhone Cases": 17.61},
+minPricelist = {"US": {"Standard T-Shirt": 14.99, "Premium T-Shirt": 16.99, "V-neck T-Shirt": 16.99, "Tank Top": 16.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 20.99, "Sweatshirt": 26.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 28.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99, "Tote Bag": 16.99, "Throw Pillows": 18.99, "Tumbler": 20.99},
+                "GB": {"Standard T-Shirt": 13.99,                           "V-neck T-Shirt": 14.99, "Tank Top": 14.99, "Long Sleeve T-Shirt": 18.99, "Raglan": 16.99, "Sweatshirt": 25.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 24.99, "PopSockets Grip":  9.99, "iPhone Cases": 13.99},
+                "DE": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 19.99, "Raglan": 17.99, "Sweatshirt": 27.99, "Pullover Hoodie": 30.99, "Zip Hoodie": 27.99, "PopSockets Grip": 10.99, "iPhone Cases": 14.99},
+                "FR": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 26.99, "PopSockets Grip": 12.99, "iPhone Cases": 15.99},
+                "IT": {"Standard T-Shirt": 15.99,                           "V-neck T-Shirt": 16.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 27.99, "Zip Hoodie": 27.99, "PopSockets Grip": 12.99, "iPhone Cases": 15.99},
+                "ES": {"Standard T-Shirt": 14.99,                           "V-neck T-Shirt": 15.99, "Tank Top": 15.99, "Long Sleeve T-Shirt": 17.99, "Raglan": 18.99, "Sweatshirt": 24.99, "Pullover Hoodie": 26.99, "Zip Hoodie": 26.99, "PopSockets Grip": 11.99, "iPhone Cases": 15.99},
+                "JP": {"Standard T-Shirt": 17.99,                                                                       "Long Sleeve T-Shirt": 23.99,                  "Sweatshirt": 31.99, "Pullover Hoodie": 35.99, "Zip Hoodie": 38.99,                           "iPhone Cases": 17.99},
                 }
  
 maxPricelist = {"US": {"Standard T-Shirt": 21.99, "Premium T-Shirt": 23.99, "V-neck T-Shirt": 23.99, "Tank Top": 23.99, "Long Sleeve T-Shirt": 26.99, "Raglan": 26.99, "Sweatshirt": 33.99, "Pullover Hoodie": 33.99, "Zip Hoodie": 35.99, "PopSockets Grip": 19.99, "iPhone Cases": 20.99, "Tote Bag": 22.99, "Throw Pillows": 23.58, "Tumbler": 22.99},
@@ -159,6 +160,7 @@ for x in d:
     message = defaultdict(list)
     message["Total"] = [float(0)]
     message["Totalsales"] = [0]
+    tumblerreminder = "add Tumbler design"
     
     for y in Allitems:
         if x == y[0]:    
@@ -167,6 +169,9 @@ for x in d:
                 continue
             if y[6] in deprecated_products:
                 print("hello")
+            if y[6] == "Tumbler":
+                tumblerreminder = ""
+                
             if y[2] == "US":            
                 message["Title"] = y[1] + " Expiring in " + str(d[x].days) + " days"         #Title
                 
@@ -216,7 +221,9 @@ for x in d:
                     message["Price"].append(y[6] + " " + y[2] + " - Adjust Price")                       # Adjust price
                     
             message["URL"] = y[11]
-            
+    
+    if len(tumblerreminder)>0:
+        message["Missing"].append(tumblerreminder)
 
 
 
@@ -229,6 +236,10 @@ for x in d:
     message["REJECTED"] = set(message["REJECTED"])
     message["Total"] = [round(message["Total"][0],2)]
     Target = total_price + message["Totalsales"][0]
+
+    if float(message["Total"][0]) != Target:
+        message["Not on Target"] = ["Not on Target"]
+        
     message["Total"] = ["Total: ", message["Total"][0], "Target: ", Target]
     
     live = status.count("PUBLISHED") + status.count("PROPAGATED")
@@ -236,16 +247,17 @@ for x in d:
 
     if (live + status.count("PUBLISHING") + status.count("REVIEW") > 0):
         i+=1
-        if i>497:
-            print(message)
+        if i>499:
+            print(message["Title"])
+            print(message["Status"])
 
        
     
     if len(status) == status.count("REJECTED"):
         live += status.count("REJECTED")
+
         
-        
-    Hidelist = {'Underpriced', 'URL', 'Title', 'Status', 'Overpriced', 'Total', "Description", "Gender", "Totalsales", "Colours"}
+    Hidelist = {'',}
        
     
     if (live > 0) and status.count("PUBLISHING") == 0 and status.count("REVIEW") == 0:
@@ -278,13 +290,9 @@ for x in d:
                 Missingcount += Missing
                 message["Missing"].append(Missing)
                 
-                if Missing < 7:
-                    Hidelist.add("Missing")
-                    missingfive+=1
-                
         pop = message.pop("Status", "pop")
               
-        if len(set(message) - Hidelist) > 0 or ( i>490 and message["Totalsales"][0]>0) or i==497:
+        if len(set(message) - Hidelist) > 0 or ( i>490 and message["Totalsales"][0]>0) or i>497:
             print (message["Title"])
 
             webbrowser.get('brave').open(message["URL"])
@@ -304,7 +312,7 @@ print ("Total", i)
 print ("Expiring", Expiringcount)
 print ("Incorrect Description", Desccount)
 print ("Missing", Missingcount, "=", int(Missingcount/150), "days")
-print("Missing 5: ", missingfive)
+print("Missing 6: ", missingfive)
 print("Missing Colours: ", missingcolours)
 print ("Timed out: ", len(Timeoutlist))
 print ("Deprecated: ", deprecated)
